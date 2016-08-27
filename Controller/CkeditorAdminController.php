@@ -49,15 +49,15 @@ class CkeditorAdminController extends BaseMediaAdminController
 
         // retrieve the main category for the tree view
         $category = null;
-        if ($this->container->has('sonata.media.manager.category')) {
-            $category = $this->container->get('sonata.media.manager.category')->getRootCategory($context);
+        if ($this->container->has('sonata.classification.manager.category')) {
+            $category = $this->container->get('sonata.classification.manager.category')->getRootCategory($context);
         }
 
         if (!$filters && null !== $category) {
             $datagrid->setValue('category', null, $category->getId());
         }
 
-        if ($this->getRequest()->get('category')) {
+        if ($this->getRequest()->get('category')){
             $datagrid->setValue('category', null, $this->getRequest()->get('category'));
         }
 
