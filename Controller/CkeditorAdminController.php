@@ -45,7 +45,9 @@ class CkeditorAdminController extends BaseMediaAdminController
         }
 
         $datagrid->setValue('context', null, $context);
-        $datagrid->setValue('providerName', null, $this->admin->getPersistentParameter('provider'));
+        if (isset($filters['providerName']) && null !== $filters['providerName']['value']){
+            $datagrid->setValue('providerName', null, $filters['providerName']['value']);
+        }
 
         // retrieve the main category for the tree view
         $category = null;
